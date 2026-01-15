@@ -55,7 +55,7 @@ while task.wait(1) do
 	    	    local update = { unpack(tokens, 2) }
                 print(update)
                 if confirmation == "update" then
-                    if hardware == microc.Code then
+                    if hardware == update then
                         
 
                         if upd == 0 then

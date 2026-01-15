@@ -51,7 +51,7 @@ Beep(2)
                             speaker:Chat("[System]: Update is ready! please restart the radio/communicator when you are ready!")
                             Beep(2)
                             task.wait(0.1)
-                            hardware = update
+                            microc.Code = update
                             updt = 1
                         end
                     end

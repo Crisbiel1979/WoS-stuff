@@ -24,25 +24,7 @@ speaker:Chat("[PLEASE LINK THE ©Communicator 3000 TO A MODEM TO RECEIVE UPDATES
 print("[PLEASE LINK THE ©Communicator 3000 TO A MODEM TO RECEIVE UPDATES. THANK YOU.]")
 Beep(2)
 
-
-
-
-microphone.Chatted:Connect(function(plr, text)
-    local usern = players:GetUsername(plr)
-
-    local message = "["..usern.."]: "..text
-
-    speaker:Chat(message)
-    print("~~~~~~~~~~~~~~~~")
-    print(plr)
-    print(message)
-    print("~~~~~~~~~~~~~~~~")
-    Beep(1)
-end)
-local upd = 0 
-local check = 0
-while task.wait(1) do 
-    modem = GetPart("Modem")
+    local upd = 0
     if modem then
         check = 1
         modem.NetworkID = "Comm3000"
@@ -81,8 +63,27 @@ while task.wait(1) do
         end)
     end
 
+
+microphone.Chatted:Connect(function(plr, text)
+    local usern = players:GetUsername(plr)
+
+    local message = "["..usern.."]: "..text
+
+    speaker:Chat(message)
+    print("~~~~~~~~~~~~~~~~")
+    print(plr)
+    print(message)
+    print("~~~~~~~~~~~~~~~~")
+    Beep(1)
+end)
+local upd = 0 
+local check = 0
+while task.wait(1) do 
+    modem = GetPart("Modem")
+    
+
     if check == 0 then
-        print("Please connect this device to a modem to recieve further updates!")
+        print("Please connect this device to a modem to recieve further updates! (EXTRA: Reset the device when connected to Modem)")
         check = 1
     end
 

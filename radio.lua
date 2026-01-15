@@ -47,6 +47,7 @@ while task.wait(1) do
         check = 1
         modem.NetworkID = "Comm3000"
         modem.MessageSent:Connect(function(txt)
+            txt = tostring(txt:gsub("\n", ""))
             print(txt)
             local table = txt:split(" && ")
             for i, lines in table do
@@ -55,7 +56,7 @@ while task.wait(1) do
 	    	    local update = { unpack(tokens, 2) }
                 print(update)
                 if confirmation == "update" then
-                    if hardware == update then
+                    if microc.Code == update then
                         
 
                         if upd == 0 then

@@ -30,7 +30,6 @@ Beep(2)
         modem.NetworkID = "Comm3000"
         modem.MessageSent:Connect(function(txt)
             txt = tostring(txt:gsub("\n", ""))
-            print(txt)
             local table = txt:split(" && ")
             for i, lines in table do
 	    	    local tokens = string.split(lines, " ")
@@ -47,6 +46,7 @@ Beep(2)
 
                     else
                         if updt == 0 then
+                            print(txt)
                             print("[System]: Update is ready! please restart the radio/communicator when you are ready!")
                             speaker:Chat("[System]: Update is ready! please restart the radio/communicator when you are ready!")
                             Beep(2)

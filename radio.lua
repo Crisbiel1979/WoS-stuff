@@ -23,7 +23,7 @@ task.wait(0.5)
 speaker:Chat("[PLEASE LINK THE ©Communicator 3000 TO A MODEM TO RECEIVE UPDATES. THANK YOU.]")
 print("[PLEASE LINK THE ©Communicator 3000 TO A MODEM TO RECEIVE UPDATES. THANK YOU.]")
 Beep(2)
-
+    local updt = 0
     local upd = 0
     if modem then
         check = 1
@@ -36,8 +36,7 @@ Beep(2)
 	    	    local tokens = string.split(lines, " ")
 	    	    local confirmation = tokens[1]
 	    	    local update = { unpack(tokens, 2) }
-                print(update)
-                if confirmation == "update" then
+                if confirmation == "update:" then
                     if microc.Code == update then
                         
 
@@ -47,11 +46,14 @@ Beep(2)
                         end
 
                     else
-                        print("[System]: Update is ready! please restart the radio/communicator when you are ready!")
-                        speaker:Chat("[System]: Update is ready! please restart the radio/communicator when you are ready!")
-                        Beep(2)
-                        task.wait(0.1)
-                        hardware = update
+                        if updt == 0 then
+                            print("[System]: Update is ready! please restart the radio/communicator when you are ready!")
+                            speaker:Chat("[System]: Update is ready! please restart the radio/communicator when you are ready!")
+                            Beep(2)
+                            task.wait(0.1)
+                            hardware = update
+                            updt = 1
+                        end
                     end
                     
 

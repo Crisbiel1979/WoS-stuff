@@ -4,7 +4,12 @@ local players = require("players")
 local modem = GetPart("Modem")
 local microc = GetPartFromPort(1, "Microcontroller")
 local hardware = microc.Code
+local check
+local Version = "V2.6"
+local UpdateLog = "Made the speaker bigger so it can stand, Made cool music when connecting to the modem"
 
+print("Version: "..Version)
+print("Update log: "..UpdateLog)
 
 speaker:Chat("[Loading communicator. this takes up to 5 seconds!]")
 Beep(2)
@@ -23,6 +28,8 @@ task.wait(0.5)
 speaker:Chat("[PLEASE LINK THE ©Communicator 3000 TO A MODEM TO RECEIVE UPDATES. THANK YOU.]")
 print("[PLEASE LINK THE ©Communicator 3000 TO A MODEM TO RECEIVE UPDATES. THANK YOU.]")
 Beep(2)
+
+local function Modem()
     local updt = 0
     local upd = 0
     if modem then
@@ -64,6 +71,7 @@ Beep(2)
 
         end)
     end
+end
 
 
 microphone.Chatted:Connect(function(plr, text)
@@ -83,7 +91,34 @@ local check = 0
 while task.wait(1) do 
     modem = GetPart("Modem")
     
-
+    if modem then
+        if upd == 0 then
+            upd = 1
+            print("Modem connected!")
+            Beep(1)
+            task.wait(0.1)
+            Beep(2)
+            task.wait(0.1)
+            Beep(3)
+            task.wait(0.1)
+            Beep(5)
+            task.wait(0.2)
+            Beep(3)
+            task.wait(0.1)
+            Beep(5)
+            Modem()
+        end
+    else
+        if upd == 1 then
+            upd = 0
+            print("Modem disconnected!")
+            Beep(1)
+            task.wait(0.1)
+            Beep(0.8)
+            task.wait(0.1)
+            Beep(0.6)
+        end
+    end
     if check == 0 then
         print("Please connect this device to a modem to recieve further updates! (EXTRA: Reset the device when connected to Modem)")
         check = 1
